@@ -1,0 +1,3 @@
+[submodule "termux-node-pty"]
+	path = termux-node-pty
+	url = https://github.com/btwiuse/termux-node-pty
