@@ -5,6 +5,7 @@ VERSION=25152
 DISTRO=reh
 DISTRO=reh-web
 TGZ="vscodium-${DISTRO}-linux-arm64-1.100.0.${VERSION}.tar.gz"
+TERMUX_NODE_PTY=../termux-node-pty/build/Release/pty.node
 
 # rm $TGZ
 # download archive
@@ -22,10 +23,14 @@ cd $DISTRO
 cp `which node` node
 
 # if host is not linux
-npm add node-pty
+[[ "$(uname)" != Linux ]] && {
+  npm add node-pty vscode-regexpp cookie @vscode/ripgrep @vscode/proxy-agent @xterm/headless @xterm/addon-unicode11
+}
 
 # if host is android termux, patch node-pty with custom build
-cp ../termux-node-pty/build/Release/pty.node node_modules/node-pty/build/Release/
+[[ -f $TERMUX_NODE_PTY ]] && {
+  cp -v $TERMUX_NODE_PTY node_modules/node-pty/build/Release/
+}
 
 # ufo pub :8000 &
 # ./bin/codium-server --without-connection-token --port 8000
