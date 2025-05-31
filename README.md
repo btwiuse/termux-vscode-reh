@@ -1,5 +1,7 @@
 # termux-vscode-reh
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/btwiuse/termux-vscode-reh)
+
 clone repo:
 
 ```
